@@ -1,14 +1,5 @@
 jonathan 
 Jeff
 peter
-<<<<<<< HEAD
-<<<<<<< HEAD
 Samh
-=======
 UNGGD
-
->>>>>>> Jeff
-=======
-UNGGD
-
->>>>>>> Jeff
