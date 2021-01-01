@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>測試網頁</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#change").click(function(){
+                    $("#textarea").text("利用按鈕改變文字");
+                });
+
+                $("#ajaxBtn").click(function(){
+                    $.ajax('/test',   // request url
+                        {
+                            method:"POST",
+                            data:{"mydata": $("#mydata").val() },
+                            success: function (data, status, xhr) {// success callback function
+                                $('p').append(data);
+                        }
+                    });
+
+                });
+                $("#ajaxBtn2").click(function(){
+                    $.ajax('/contentInstance',   // request url
+                        {
+                            method:"POST",
+                            data:{"mydata2": $("#mydata2").val(),
+                                  "mydata3": $("#mydata3").val(),
+                                  "User_Name": $("#User_Name").val(),
+                                  "Start_Time": $("#Start_Time").val(),
+                                  "End_Time": $("#End_Time").val(),
+                                  "Weight": $("#Weight").val(),
+                                  "number_of_set": $("#number_of_set").val(),
+                                  "Calories": $("#Calories").val()
+                                 },
+                            success: function (data, status, xhr) {// success callback function
+                                $('p').append(data);
+                        }
+                    });
+
+                });
+                $("#ajaxBtn3").click(function(){
+                    $.ajax('/Delete_AE',   // request url
+                        {
+                            method:"POST",
+                            data:{"mydata4": $("#mydata4").val()},
+                            success: function (data, status, xhr) {// success callback function
+                                $('p').append(data);
+                        }
+                    });
+
+                });
+            });
+            function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table="<tr><th>Artist</th><th>Title</th></tr>";
+            var x = xmlDoc.getElementsByTagName("CD");
+            for (i = 0; i <x.length; i++) {
+                table += "<tr><td>" +
+                x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+            }
+        </script>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 30%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 2px;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+    </head>
+    <body>
+        <p id="textarea">這是初始的網頁內容</p>
+        <button type="button" id="change">改變文字</button>
+        <hr />
+        <form action="./test" method="GET">
+            <button type="submit">查詢</button>
+        </form>
+        <form action="./test" method="POST">
+            <input type="text" name="mydata" id="mydata" />
+            <button type="button" id="ajaxBtn">Creat_Sensor</button>
+        </form>
+        <form action="./test" method="POST">
+            <input type="text" name="mydata2" id="mydata2" />
+            <input type="text" name="mydata3" id="mydata3" />
+            <button type="button" id="ajaxBtn2">Add_Constent_Instance</button>
+            <table>
+                <tr>
+                  <th>Atribute</th>
+                  <th>Value</th>
+                </tr>
+                <tr>
+                  <td>User_Name</td>
+                  <td><input type="text" name="User_Name" id="User_Name" /></td>
+                </tr>
+                <tr>
+                  <td>Start_Time</td>
+                  <td><input type="text" name="Start_Time" id="Start_Time" /></td>
+                </tr>
+                <tr>
+                  <td>End_Time</td>
+                  <td><input type="text" name="End_Time" id="End_Time" /></td>
+                </tr>
+                <tr>
+                  <td>Weight</td>
+                  <td><input type="text" name="Weight" id="Weight" /></td>
+                </tr>
+                <tr>
+                    <td>number_of_set</td>
+                    <td><input type="text" name="number_of_set" id="number_of_set" /></td>
+                  </tr>
+                <tr>
+                    <td>Calories</td>
+                    <td><input type="text" name="Calories" id="Calories" /></td>
+                  </tr>
+              </table>
+        </form>
+        <form action="./Delete_AE" method="POST">
+            <input type="text" name="mydata4" id="mydata4" />
+            <button type="button" id="ajaxBtn3">Delete_Sensor</button>
+        </form>
+
+        </form>
+    </body>
+</html>
