@@ -4,8 +4,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
-                $("#change").click(function(){
-                    $("#textarea").text("利用按鈕改變文字");
+                $("#check").click(function(){
+                    $.ajax('/test',   // request url
+                        {
+                            method:"GET",
+                            success: function (data, status, xhr) {// success callback function
+                                $('#machine_list').append(data);
+                        }
+                    });
                 });
 
                 $("#ajaxBtn").click(function(){
@@ -84,12 +90,9 @@
             </style>
     </head>
     <body>
-        <p id="textarea">這是初始的網頁內容</p>
-        <button type="button" id="change">改變文字</button>
-        <hr />
-        <form action="./test" method="GET">
-            <button type="submit">查詢</button>
-        </form>
+        <button type="button" name="check "id="check">查詢裝置</button>
+        <p id="machine_list"></p>
+
         <form action="./test" method="POST">
             <input type="text" name="mydata" id="mydata" />
             <button type="button" id="ajaxBtn">Creat_Sensor</button>
