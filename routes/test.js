@@ -5,8 +5,8 @@ var request = require('sync-request');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send(read_sensor());
 
+  res.send(read_all_sensor());
 });
 
 /* POST users listing. */
@@ -89,8 +89,21 @@ function read_all_sensor(){
   }
   var res = request('GET', 'http://localhost:8080/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
   //console.log( JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch'])
-  return JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch']
+  data = JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch']
+  
+  return parse_json(data)
 }
+function parse_json(data){
+  
+  var i;
+  var machine=[];
+  for (i=0;i<data.length;i++)
+  {
+    machine[i] = data[i]['nm'];
+  }
+  return machine
+}
+
 /*
 function read_sensor_url(name){
   headers = {
@@ -111,5 +124,5 @@ function read_sensor_url(name){
 /////////////////////////////////////
 //creat_DESCRIPTOR_container('apple','descriptor5')
 //creat_DESCRIPTOR_contentInstance('apple','dd')
-
+console.log(read_all_sensor())
 module.exports = router;
