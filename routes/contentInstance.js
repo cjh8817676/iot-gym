@@ -38,7 +38,8 @@ function creat_DESCRIPTOR_contentInstance(input){
           &lt;/obj&gt;
       </con>
   </m2m:cin>`
-    var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${input.mydata2}/${input.mydata3}` , {headers:headers , body:xml});
+    var res = request('POST', `http://jeff.frp.morrisnet.top/~/mn-cse/mn-name/${input.mydata2}/${input.mydata3}` , {headers:headers , body:xml});
+    //var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${input.mydata2}/${input.mydata3}` , {headers:headers , body:xml});
     //var res = request('POST', 'http://localhost:8080/~/mn-cse/CAE447774024' , {headers:headers , body:xml});
 
     console.log(res.getBody('utf-8'));
