@@ -2,14 +2,21 @@
     <head>
         <title>測試網頁</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
+        <script type="text/javascript">
             $(document).ready(function(){
                 $("#check").click(function(){
                     $.ajax('/test',   // request url
                         {
                             method:"GET",
                             success: function (data, status, xhr) {// success callback function
-                                $('#machine_list').append(data);
+                            
+                                var tableData
+                                //動態增加5個td,並且把data陣列的五個值賦給每個td
+                                for(var i=0;i<data.length;i++){
+                                tableData+="<tr>"+"<td>"+data[i]+"</td>"+"</tr>"
+                                }
+                                //現在tableData已經生成好了，把他賦值給上面的tbody
+                                $("#tbody1").html(tableData)                      
                         }
                     });
                 });
@@ -36,6 +43,7 @@
                                   "End_Time": $("#End_Time").val(),
                                   "Weight": $("#Weight").val(),
                                   "number_of_set": $("#number_of_set").val(),
+                                  "Average_speed": $("#Average_speed").val(),
                                   "Calories": $("#Calories").val()
                                  },
                             success: function (data, status, xhr) {// success callback function
@@ -91,7 +99,6 @@
     </head>
     <body>
         <button type="button" name="check "id="check">查詢裝置</button>
-        <p id="machine_list"></p>
 
         <form action="./test" method="POST">
             <input type="text" name="mydata" id="mydata" />
@@ -101,7 +108,7 @@
             <input type="text" name="mydata2" id="mydata2" />
             <input type="text" name="mydata3" id="mydata3" />
             <button type="button" id="ajaxBtn2">Add_Constent_Instance</button>
-            <table>
+            <table id="table_input" name="table_input">
                 <tr>
                   <th>Atribute</th>
                   <th>Value</th>
@@ -127,6 +134,10 @@
                     <td><input type="text" name="number_of_set" id="number_of_set" /></td>
                   </tr>
                 <tr>
+                    <td>Average_speed</td>
+                    <td><input type="text" name="Average_speed" id="Average_speed" /></td>
+                  </tr>
+                <tr>
                     <td>Calories</td>
                     <td><input type="text" name="Calories" id="Calories" /></td>
                   </tr>
@@ -137,6 +148,11 @@
             <button type="button" id="ajaxBtn3">Delete_Sensor</button>
         </form>
 
-        </form>
+        <table>
+            <tr>
+                <th>My_Sensor</th>
+             </tr>
+            <tbody id="tbody1"></tbody>
+        </table>
     </body>
 </html>
