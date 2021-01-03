@@ -35,7 +35,9 @@
                                   "Start_Time": $("#Start_Time").val(),
                                   "End_Time": $("#End_Time").val(),
                                   "Weight": $("#Weight").val(),
+                                  "Reps" : $("#Reps").val(),
                                   "number_of_set": $("#number_of_set").val(),
+                                  "Average_speed": $("#Average_speed").val(),
                                   "Calories": $("#Calories").val()
                                  },
                             success: function (data, status, xhr) {// success callback function
@@ -123,13 +125,21 @@
                   <td><input type="text" name="Weight" id="Weight" /></td>
                 </tr>
                 <tr>
+                    <td>Reps</td>
+                    <td><input type="text" name="Reps" id="Reps" /></td>
+                  </tr>
+                <tr>
                     <td>number_of_set</td>
                     <td><input type="text" name="number_of_set" id="number_of_set" /></td>
-                  </tr>
+                </tr>
+                <tr>
+                    <td>Average_speed</td>
+                    <td><input type="text" name="Average_speed" id="Average_speed" /></td>
+                </tr>
                 <tr>
                     <td>Calories</td>
                     <td><input type="text" name="Calories" id="Calories" /></td>
-                  </tr>
+                </tr>
               </table>
         </form>
         <form action="./Delete_AE" method="POST">
