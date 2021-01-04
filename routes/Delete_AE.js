@@ -38,7 +38,8 @@ function read_all_sensor(){
     //console.log( JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch'])
     return JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch']
   }
-function read_sensor_url(name){
+function read_sensor_url(name)
+{
   console.log('my input is')
   console.log(name)
   
@@ -56,7 +57,9 @@ function read_sensor_url(name){
         return  all_sensor[i].val
       }
     }
-  }
+}
+
 //  console.log(read_sensor_url('mtt'))
 //delete_sensor(read_sensor_url('mtt'))
 module.exports = router;
+

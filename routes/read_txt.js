@@ -117,8 +117,12 @@ function data_content(data_str_split)
     return input
 }
 
+//debug用
+/*
 var data_str_split = split_data(read_data);
 var input = data_content(data_str_split[0]);
+*/
+//debug用
 
 /*
 console.log('User_Name : ' + input.User_Name);
@@ -133,9 +137,9 @@ console.log('Calories : ' + input.Calories);
   
 
 //module.exports = router;
-/*
+
+
 module.exports = {
-    split_data : split_data,
+    split_data : split_data,  //匯出後的名字 : 這函式庫的名字
     data_content : data_content
 };
-*/

@@ -1,21 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('sync-request');
-var read_txt = require('d://JeffTaipeiTech2020//i_GYM//iot-gym//routes//read_txt.js');
+var read_txt = require('./read_txt');  //在同一資料夾不用在寫檔案名稱
 var fs = require('fs');
-
-var read_data = fs.readFileSync('D://JeffTaipeiTech2020//i_GYM//read_txt.txt');
-var data_str_split = read_txt.split_data(read_data);
-var input = read_txt.data_content(data_str_split[0]);
-
-console.log('User_Name : ' + input.User_Name);
-console.log('Start_Time : ' + input.Start_Time);
-console.log('End_Time : ' + input.End_Time);
-console.log('Weight : ' + input.Weight);
-console.log('Reps : ' + input.Reps);
-console.log('number_of_set : ' + input.number_of_set);
-console.log('Average_speed : ' + input.Average_speed);
-console.log('Calories : ' + input.Calories);
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -61,4 +48,27 @@ function creat_DESCRIPTOR_contentInstance(input){
 
     console.log(res.getBody('utf-8'));
   }
+
+
+  //上傳測試資料
+  /*
+  var read_data = fs.readFileSync('D://JeffTaipeiTech2020//i_GYM//read_txt.txt');  //讀測試資料
+
+  var data_str_split = read_txt.split_data(read_data);
+  var input = read_txt.data_content(data_str_split[0]);
+  
+  console.log('User_Name : ' + input.User_Name);
+  console.log('Start_Time : ' + input.Start_Time);
+  console.log('End_Time : ' + input.End_Time);
+  console.log('Weight : ' + input.Weight);
+  console.log('Reps : ' + input.Reps);
+  console.log('number_of_set : ' + input.number_of_set);
+  console.log('Average_speed : ' + input.Average_speed);
+  console.log('Calories : ' + input.Calories);
+
+  creat_DESCRIPTOR_contentInstance(input);
+  */
+  //上傳測試資料
+
+
   module.exports = router;
