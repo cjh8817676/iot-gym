@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   delete_sensor(read_sensor_url(req.body.mydata4));
   res.send('received data='+req.body.mydata4);
-  
+});
 /*  post something */
 
 function delete_sensor(name){

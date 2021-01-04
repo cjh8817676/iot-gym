@@ -51,23 +51,37 @@ function creat_DESCRIPTOR_contentInstance(input){
 
 
   //上傳測試資料
-  /*
-  var read_data = fs.readFileSync('D://JeffTaipeiTech2020//i_GYM//read_txt.txt');  //讀測試資料
-
-  var data_str_split = read_txt.split_data(read_data);
-  var input = read_txt.data_content(data_str_split[0]);
   
-  console.log('User_Name : ' + input.User_Name);
-  console.log('Start_Time : ' + input.Start_Time);
-  console.log('End_Time : ' + input.End_Time);
-  console.log('Weight : ' + input.Weight);
-  console.log('Reps : ' + input.Reps);
-  console.log('number_of_set : ' + input.number_of_set);
-  console.log('Average_speed : ' + input.Average_speed);
-  console.log('Calories : ' + input.Calories);
+  //debug用
+  var read_data = fs.readFileSync('D://JeffTaipeiTech2020//i_GYM//test_data.txt', 'utf-8');
+  var data_str_split = read_txt.split_data(read_data);
+  //console.log('str_test_split : ' + typeof(str_test_split));
+  var input; 
 
-  creat_DESCRIPTOR_contentInstance(input);
-  */
+  //查看object個數
+  data_str_split_2 = data_str_split.toString().split("\n");
+  var test_amount = Object.keys(data_str_split_2);
+  var test_len = test_amount.length;
+  console.log('test_len : ' + test_len);
+  //查看object個數
+
+  for(var i = 0; i < test_len-1 ; i = i+9)
+  {
+      input = read_txt.data_content(data_str_split[0], i);
+      /*
+      console.log('User_Name : ' + input.User_Name);
+      console.log('Start_Time : ' + input.Start_Time);
+      console.log('End_Time : ' + input.End_Time);
+      console.log('Weight : ' + input.Weight);
+      console.log('Reps : ' + input.Reps);
+      console.log('number_of_set : ' + input.number_of_set);
+      console.log('Average_speed : ' + input.Average_speed);
+      console.log('Calories : ' + input.Calories + '\n');
+      */
+
+      creat_DESCRIPTOR_contentInstance(input);
+  }
+  
   //上傳測試資料
 
 
