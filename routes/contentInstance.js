@@ -30,6 +30,7 @@ function creat_DESCRIPTOR_contentInstance(input){
       <con>
           &lt;obj&gt;
               &lt;str name=&quot;User_Name&quot; val=&quot;${input.User_Name}&quot;/&gt;
+              &lt;str name=&quot;Date&quot; val=&quot;${input.Date}&quot;/&gt;
               &lt;str name=&quot;Start_Time&quot; val=&quot;${input.Start_Time}&quot;/&gt;
               &lt;str name=&quot;End_Time&quot; val=&quot;${input.End_Time}&quot;/&gt;
               &lt;str name=&quot;Weight&quot; val=&quot;${input.Weight}&quot;/&gt;
@@ -53,7 +54,7 @@ function creat_DESCRIPTOR_contentInstance(input){
   //上傳測試資料
   
   //debug用
-  var read_data = fs.readFileSync('D://JeffTaipeiTech2020//i_GYM//test_data.txt', 'utf-8');
+  var read_data = fs.readFileSync('D://JeffTaipeiTech2020//i_GYM//read_txt.txt', 'utf-8');
   var data_str_split = read_txt.split_data(read_data);
   //console.log('str_test_split : ' + typeof(str_test_split));
   var input; 
@@ -65,7 +66,7 @@ function creat_DESCRIPTOR_contentInstance(input){
   console.log('test_len : ' + test_len);
   //查看object個數
 
-  for(var i = 0; i < test_len-1 ; i = i+9)
+  for(var i = 0; i < test_len-1 ; i = i+10)
   {
       input = read_txt.data_content(data_str_split[0], i);
       /*
