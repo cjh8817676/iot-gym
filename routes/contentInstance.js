@@ -32,15 +32,21 @@ function creat_DESCRIPTOR_contentInstance(input){
               &lt;str name=&quot;Start_Time&quot; val=&quot;${input.Start_Time}&quot;/&gt;
               &lt;str name=&quot;End_Time&quot; val=&quot;${input.End_Time}&quot;/&gt;
               &lt;str name=&quot;Weight&quot; val=&quot;${input.Weight}&quot;/&gt;
+              &lt;str name=&quot;Reps&quot; val=&quot;${input.Reps}&quot;/&gt;
               &lt;str name=&quot;number_of_set&quot; val=&quot;${input.number_of_set}&quot;/&gt;
+<<<<<<< HEAD
               &lt;str name=&quot;Average_Speed&quot; val=&quot;${input.Average_Speed}&quot;/&gt;
+=======
+              &lt;str name=&quot;Average_speed&quot; val=&quot;${input.Average_speed}&quot;/&gt;
+>>>>>>> Jeff
               &lt;str name=&quot;Calories&quot; val=&quot;${input.Calories}&quot;/&gt;
               &lt;op name=&quot;getValue&quot; href=&quot;/in-cse/in-name/MY_SENSOR/DATA/la&quot;
            in=&quot;obix:Nil&quot; out=&quot;obix:Nil&quot; is=&quot;retrieve&quot;/&gt;
           &lt;/obj&gt;
       </con>
   </m2m:cin>`
-    var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${input.mydata2}/${input.mydata3}` , {headers:headers , body:xml});
+    var res = request('POST', `http://jeff.frp.morrisnet.top/~/mn-cse/mn-name/${input.mydata2}/${input.mydata3}` , {headers:headers , body:xml});
+    //var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${input.mydata2}/${input.mydata3}` , {headers:headers , body:xml});
     //var res = request('POST', 'http://localhost:8080/~/mn-cse/CAE447774024' , {headers:headers , body:xml});
 
     console.log(res.getBody('utf-8'));

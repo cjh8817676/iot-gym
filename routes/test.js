@@ -33,7 +33,8 @@ function create_sensor(name){
   <lbl>Type/sensor Category/temperature Location/home</lbl>
   <rr>false</rr>
 </m2m:ae>`
-  var res = request('POST', 'http://127.0.0.1:8080/~/mn-cse' , {headers:headers , body:xml});
+  var res = request('POST', 'http://jeff.frp.morrisnet.top/~/mn-cse' , {headers:headers , body:xml});
+  //var res = request('POST', 'http://127.0.0.1:8080/~/mn-cse' , {headers:headers , body:xml});
   console.log(res.getBody('utf-8'));
 }
 
@@ -46,8 +47,9 @@ function creat_DESCRIPTOR_container(AEname,DCname){
   //console.log('http://localhost:8080/~'+path)
   xml=
 	`<m2m:cnt xmlns:m2m="http://www.onem2m.org/xml/protocols" rn="${DCname}">
-	</m2m:cnt>`
-  var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${AEname}` , {headers:headers , body:xml});
+  </m2m:cnt>`
+  var res = request('POST', `http://jeff.frp.morrisnet.top/~/mn-cse/mn-name/${AEname}` , {headers:headers , body:xml});
+  //var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${AEname}` , {headers:headers , body:xml});
   //var res = request('POST', 'http://localhost:8080/~/mn-cse/CAE447774024' , {headers:headers , body:xml});
 
   console.log(res.getBody('utf-8'));
@@ -73,7 +75,9 @@ function creat_DESCRIPTOR_contentInstance(AEname,DCname){
         &lt;/obj&gt;
     </con>
 </m2m:cin>`
-  var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${AEname}/${DCname}` , {headers:headers , body:xml});
+
+  var res = request('POST', `http://jeff.frp.morrisnet.top/~/mn-cse/mn-name/${AEname}/${DCname}` , {headers:headers , body:xml});
+  //var res = request('POST', `http://localhost:8080/~/mn-cse/mn-name/${AEname}/${DCname}` , {headers:headers , body:xml});
   //var res = request('POST', 'http://localhost:8080/~/mn-cse/CAE447774024' , {headers:headers , body:xml});
 
   console.log(res.getBody('utf-8'));
@@ -87,7 +91,8 @@ function read_all_sensor(){
     'X-M2M-Origin': 'admin:admin',
     "Accept": "application/json"
   }
-  var res = request('GET', 'http://localhost:8080/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
+  var res = request('GET', 'http://jeff.frp.morrisnet.top/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
+  //var res = request('GET', 'http://localhost:8080/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
   //console.log( JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch'])
   data = JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch']
   
@@ -124,5 +129,9 @@ function read_sensor_url(name){
 /////////////////////////////////////
 //creat_DESCRIPTOR_container('apple','descriptor5')
 //creat_DESCRIPTOR_contentInstance('apple','dd')
+<<<<<<< HEAD
 //console.log(read_all_sensor())
+=======
+
+>>>>>>> Jeff
 module.exports = router;

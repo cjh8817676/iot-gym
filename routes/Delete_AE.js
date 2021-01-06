@@ -24,7 +24,8 @@ function delete_sensor(name){
     'X-M2M-Origin': 'admin:admin',
     'Content-Type': 'application/xml;ty=2'
   }
-  var res = request('DELETE', `http://127.0.0.1:8080/~${name}` , {headers:headers});
+  var res = request('DELETE', `http://jeff.frp.morrisnet.top/~${name}` , {headers:headers});
+  //var res = request('DELETE', `http://127.0.0.1:8080/~${name}` , {headers:headers});
   console.log(res.getBody('utf-8'));
 }
 function read_all_sensor(){
@@ -32,7 +33,8 @@ function read_all_sensor(){
       'X-M2M-Origin': 'admin:admin',
       "Accept": "application/json"
     }
-    var res = request('GET', 'http://localhost:8080/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
+    var res = request('GET', 'http://jeff.frp.morrisnet.top/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
+    //var res = request('GET', 'http://localhost:8080/~/mn-cse?rcn=5&lvl=1' , {headers:headers });
     //console.log(JSON.parse(res.getBody('utf-8'))['m2m:cb']['csi'])
     //console.log( JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch'])
     return JSON.parse(res.getBody('utf-8'))['m2m:cb']['ch']
